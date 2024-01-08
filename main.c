@@ -4,6 +4,10 @@
 #include "lib.c"
 
 int main(){
+    #ifdef _WIN32
+        system("chcp 65001");
+        procClear(0);
+    #endif
     MachineReserve reserve;
     MachineCaisse caisse;
 
@@ -26,7 +30,7 @@ int main(){
     caisse.nbpiece005 = 0;
 
     do{
-        printf("Que souhaitez vous ?\n (1) Baguette - 0.90€ \n (2) Pain Long - 1.60€ \n (3) Pain au seigle - 2.20€ \n (4) Pain au chocolat - 1.10€ \n (5) Croissant - 1.10€ \n (6) Pizza - 2.80€ \n (7) Pissaladiere - 2.80€ \n Entrer votre choix : ");
+        printf("Que souhaitez vous ?\n (1) Baguette - 0.90€ \n (2) Pain Long - 1.60€ \n (3) Pain au seigle - 2.20€ \n (4) Pain au chocolat - 1.10€ \n (5) Croissant - 1.10€ \n (6) Pizza - 2.80€ \n (7) Pissaladiere - 2.80€\n (8) Quitter\n (9) Caisse/Reserve\n Entrer votre choix : ");
         if (scanf("%d", &id) != 1) {
             scanf("%*s");
             procClear(4);
@@ -48,7 +52,7 @@ int main(){
             }
             else{
                 procClear(0);
-                printf("Il ne reste que %d Baguette(s), vraiment désolé ...\n\n", reserve.nbbaguette);
+                printf("Il ne reste que %d Baguette(s), vraiment d\u00e9sol\u00e9 ...\n\n", reserve.nbbaguette);
             }
             break;
         case 2:
